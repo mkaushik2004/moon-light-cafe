@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon Light Cafe 🌙 | Where Dreams Meet Coffee</title>
+    <link rel="icon" href="../assets/img/icon.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coffee-dark: #2C1810;
+            --coffee-medium: #5D4037;
+            --coffee-light: #8D6E63;
+            --coffee-cream: #D7CCC8;
+            --coffee-gold: #D4AF37;
+            --coffee-white: #F5F5DC;
+            --coffee-brown: #3E2723;
+            --coffee-beige: #EFEBE9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--coffee-dark);
+            overflow-x: hidden;
+            background: var(--coffee-white);
+        }
+
+        /* 3D Coffee Bean Background */
+        .coffee-beans-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--coffee-medium) 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, var(--coffee-light) 3px, transparent 3px),
+                radial-gradient(circle at 40% 80%, var(--coffee-dark) 2px, transparent 2px),
+                radial-gradient(circle at 90% 20%, var(--coffee-medium) 2px, transparent 2px);
+            background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px;
+            animation: float-beans 20s ease-in-out infinite;
+        }
+
+        @keyframes float-beans {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-medium) 50%, var(--coffee-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../assets/img/background/1.jpg') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        /* 3D Coffee Cup Animation */
+        .coffee-cup {
+            position: absolute;
+            right: 10%;
+            top: 20%;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--coffee-cream), var(--coffee-gold));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.3),
+                inset 0 -10px 20px rgba(0,0,0,0.2),
+                inset 0 10px 20px rgba(255,255,255,0.3);
+            animation: steam 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .coffee-cup::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            animation: steam-rise 3s ease-in-out infinite;
+        }
+
+        /* Additional 3D Elements */
+        .floating-coffee-beans {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .coffee-bean {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: var(--coffee-medium);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float-bean 6s ease-in-out infinite;
+        }
+
+        .coffee-bean:nth-child(1) {
+            top: 15%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .coffee-bean:nth-child(2) {
+            top: 25%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        .coffee-bean:nth-child(3) {
+            bottom: 30%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float-bean {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes steam {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @keyframes steam-rise {
+            0% { opacity: 0; transform: translateX(-50%) translateY(0px) scale(0.5); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(-30px) scale(1); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-60px) scale(0.5); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--coffee-white);
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, var(--coffee-gold), var(--coffee-cream));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            color: var(--coffee-dark);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 15px 35px rgba(212, 175, 55, 0.4),
+                inset 0 2px 0 rgba(255,255,255,0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(212, 175, 55, 0.6),
+                inset 0 2px 0 rgba(255,255,255,0.3);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--coffee-gold);
+        }
+
+        .navbar.scrolled {
+            background: rgba(44, 24, 16, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 3px solid var(--coffee-gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--coffee-white);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .nav-links a:hover {
+            color: var(--coffee-gold);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Special Section */
+        .special-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--coffee-beige) 0%, var(--coffee-cream) 100%);
+            position: relative;
+        }
+
+        .special-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coffee-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%235D4037" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23coffee-pattern)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--coffee-dark);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--coffee-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.4s ease;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .menu-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu-card-content {
+            padding: 2.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, white 0%, var(--coffee-beige) 100%);
+        }
+
+        .menu-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--coffee-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-btn {
+            background: linear-gradient(45deg, var(--coffee-medium), var(--coffee-light));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 20px rgba(93, 64, 55, 0.3);
+        }
+
+        .menu-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(93, 64, 55, 0.4);
+            background: linear-gradient(45deg, var(--coffee-light), var(--coffee-medium));
+        }
+
+        /* New Gallery Section */
+        .gallery-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(44, 24, 16, 0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            color: var(--coffee-white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--coffee-gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--coffee-cream);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            color: var(--coffee-white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--coffee-gold);
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--coffee-cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--coffee-gold);
+            transform: translateX(5px);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-logo img {
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--coffee-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--coffee-medium);
+            color: var(--coffee-cream);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .coffee-cup {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 3D Hover Effects */
+        .menu-card, .cta-button, .logo {
+            transform-style: preserve-3d;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(2deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 3D Coffee Beans Background -->
+    <div class="coffee-beans-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <img src="../assets/img/icon.jpg" alt="Moon Light Cafe" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <!-- <img src="../assets/img/icon.jpg" alt="Profile" class="logo"> -->
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- 3D Coffee Cup -->
+        <div class="coffee-cup"></div>
+        
+        <!-- Floating Coffee Beans -->
+        <div class="floating-coffee-beans">
+            <div class="coffee-bean"></div>
+            <div class="coffee-bean"></div>
+            <div class="coffee-bean"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Moon Light Cafe</h1>
+            <p>Where every sip tells a story, and every moment becomes a memory. Experience the perfect blend of tradition and innovation in every cup.</p>
+            <a href="menu.html" class="cta-button">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Special Section -->
+    <section class="special-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Signature Collections</h2>
+                <p>Discover our carefully curated selection of premium beverages and delicacies, crafted with passion and served with love.</p>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-card fade-in">
+                    <img src="../assets/img/menu/home/M1.jpg" alt="Bestseller">
+                    <div class="menu-card-content">
+                        <h3>Bestseller</h3>
+                        <a href="menu.html" class="menu-btn">Explore</a>
+                    </div>
+                </div>
+
+                <div class="menu-card fade-in">
+                    <img src="../assets/img/menu/home/M2.jpg" alt="Drinks">
+                    <div class="menu-card-content">
+                        <h3>Premium Drinks</h3>
+                        <a href="menu.html" class="menu-btn">Explore</a>
+                    </div>
+                </div>
+
+                <div class="menu-card fade-in">
+                    <img src="../assets/img/menu/home/M4.jpg" alt="Food">
+                    <div class="menu-card-content">
+                        <h3>Gourmet Food</h3>
+                        <a href="menu.html" class="menu-btn">Explore</a>
+                    </div>
+                </div>
+
+                <div class="menu-card fade-in">
+                    <img src="../assets/img/menu/home/M5.jpg" alt="Coffee Roasters">
+                    <div class="menu-card-content">
+                        <h3>Coffee Roasters</h3>
+                        <a href="menu.html" class="menu-btn">Explore</a>
+                    </div>
+                </div>
+
+                <div class="menu-card fade-in">
+                    <img src="../assets/img/menu/home/M3.jpg" alt="Desserts">
+                    <div class="menu-card-content">
+                        <h3>Desserts & Chocolates</h3>
+                        <a href="menu.html" class="menu-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Cafe Gallery</h2>
+                <p>Take a visual journey through our cozy spaces, delicious creations, and memorable moments.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="../assets/img/gallery/1.png" alt="Cafe Interior">
+                    <div class="gallery-overlay">
+                        <h3>Cozy Interior</h3>
+                        <p>Our warm and inviting atmosphere</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="../assets/img/gallery/2.png" alt="Coffee Art">
+                    <div class="gallery-overlay">
+                        <h3>Latte Art</h3>
+                        <p>Beautiful coffee creations</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="../assets/img/gallery/3.png" alt="Fresh Pastries">
+                    <div class="gallery-overlay">
+                        <h3>Fresh Pastries</h3>
+                        <p>Baked fresh daily</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="../assets/img/about/1.jpg" alt="Coffee Beans">
+                    <div class="gallery-overlay">
+                        <h3>Premium Beans</h3>
+                        <p>Finest quality coffee beans</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="../assets/img/about/2.jpg" alt="Barista">
+                    <div class="gallery-overlay">
+                        <h3>Expert Baristas</h3>
+                        <p>Passionate coffee artisans</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="../assets/img/about/3.jpg" alt="Cafe Atmosphere">
+                    <div class="gallery-overlay">
+                        <h3>Perfect Ambiance</h3>
+                        <p>Relaxing and inspiring space</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Coffee Varieties</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Menu Items</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="../assets/img/icon.jpg" style="height: 150px; width: 150px; border-radius: 50%;" alt="Moon Light Cafe" class="footer-logo">
+                    <p>Creating moments of joy, one cup at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@moonlightcafe.com</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Coffee Street, Brew City</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moon Light Cafe. All rights reserved. | Crafted with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.menu-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Gallery hover effects
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Moon Light Cafe 🌙</title>
+    <link rel="icon" href="../assets/img/icon.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coffee-dark: #2C1810;
+            --coffee-medium: #5D4037;
+            --coffee-light: #8D6E63;
+            --coffee-cream: #D7CCC8;
+            --coffee-gold: #D4AF37;
+            --coffee-white: #F5F5DC;
+            --coffee-brown: #3E2723;
+            --coffee-beige: #EFEBE9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-medium) 50%, var(--coffee-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 3D Coffee Bean Background */
+        .coffee-beans-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--coffee-gold) 3px, transparent 3px),
+                radial-gradient(circle at 80% 70%, var(--coffee-cream) 4px, transparent 4px),
+                radial-gradient(circle at 40% 80%, var(--coffee-gold) 2px, transparent 2px),
+                radial-gradient(circle at 90% 20%, var(--coffee-cream) 3px, transparent 3px);
+            background-size: 120px 120px, 180px 180px, 100px 100px, 150px 150px;
+            animation: float-beans 25s ease-in-out infinite;
+        }
+
+        @keyframes float-beans {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../assets/img/background/1.jpg') center/cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 3.5rem;
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            width: 100%;
+            max-width: 480px;
+            animation: slideInUp 1s ease-out;
+            border: 2px solid var(--coffee-gold);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .login-header img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--coffee-gold);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .login-header img:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 20px 45px rgba(212, 175, 55, 0.6);
+        }
+
+        .login-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--coffee-dark);
+            margin-bottom: 0.8rem;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .login-header p {
+            color: var(--coffee-medium);
+            font-size: 1.1rem;
+        }
+
+        .tab-container {
+            display: flex;
+            background: var(--coffee-beige);
+            border-radius: 20px;
+            padding: 8px;
+            margin-bottom: 2.5rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px 25px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-radius: 15px;
+            font-weight: 700;
+            color: var(--coffee-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .tab.active {
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            color: var(--coffee-dark);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 18px 25px;
+            border: 2px solid var(--coffee-cream);
+            border-radius: 20px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--coffee-dark);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--coffee-gold);
+            box-shadow: 
+                0 0 0 4px rgba(212, 175, 55, 0.1),
+                inset 0 2px 4px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder {
+            color: var(--coffee-light);
+        }
+
+        .forgot-link {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .forgot-link a {
+            color: var(--coffee-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .forgot-link a:hover {
+            color: #B8860B;
+            transform: translateY(-1px);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            color: var(--coffee-dark);
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2.5rem;
+            box-shadow: 
+                0 15px 35px rgba(212, 175, 55, 0.4),
+                inset 0 2px 0 rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .login-btn:hover::before {
+            left: 100%;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(212, 175, 55, 0.6),
+                inset 0 2px 0 rgba(255,255,255,0.3);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--coffee-gold), transparent);
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 1.5rem;
+            color: var(--coffee-medium);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 25px;
+            border: 2px solid var(--coffee-cream);
+            border-radius: 20px;
+            background: white;
+            color: var(--coffee-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-btn:hover {
+            border-color: var(--coffee-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .social-btn img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--coffee-gold);
+        }
+
+        .social-btn.google {
+            color: #ea4335;
+        }
+
+        .social-btn.microsoft {
+            color: #00a4ef;
+        }
+
+        .social-btn.mobile {
+            color: #28a745;
+        }
+
+        /* 3D Coffee Cup Animation */
+        .coffee-cup-3d {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--coffee-cream), var(--coffee-gold));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 
+                0 15px 30px rgba(0,0,0,0.3),
+                inset 0 -8px 15px rgba(0,0,0,0.2),
+                inset 0 8px 15px rgba(255,255,255,0.3);
+            animation: steam-3d 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .coffee-cup-3d::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            animation: steam-rise-3d 4s ease-in-out infinite;
+        }
+
+        @keyframes steam-3d {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-8px) rotate(3deg) scale(1.05); }
+        }
+
+        @keyframes steam-rise-3d {
+            0% { opacity: 0; transform: translateX(-50%) translateY(0px) scale(0.5); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(-25px) scale(1); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-50px) scale(0.5); }
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form validation styles */
+        .form-group.error input {
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1);
+        }
+
+        .form-group.success input {
+            border-color: #27ae60;
+            box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.1);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2.5rem;
+                margin: 10px;
+            }
+
+            .login-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .social-login {
+                gap: 1rem;
+            }
+
+            .coffee-cup-3d {
+                display: none;
+            }
+        }
+
+        /* 3D Hover Effects */
+        .login-container {
+            transform-style: preserve-3d;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px) rotateX(2deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 3D Coffee Beans Background -->
+    <div class="coffee-beans-bg"></div>
+    
+    <!-- 3D Coffee Cup -->
+    <div class="coffee-cup-3d"></div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <img src="../assets/img/icon.jpg" alt="Moon Light Cafe">
+            <h1>Welcome Back</h1>
+            <p>Sign in to your account to continue</p>
+        </div>
+
+        <div class="tab-container">
+            <button class="tab active" onclick="switchTab('login')">Login</button>
+            <button class="tab" onclick="switchTab('signup')">Sign Up</button>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" placeholder="Username or Mobile" required>
+                <div class="error-message">Please enter a valid username or mobile number</div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" placeholder="Password" required>
+                <div class="error-message">Password is required</div>
+            </div>
+
+            <div class="forgot-link">
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+
+        <div class="divider">
+            <span>or continue with</span>
+        </div>
+
+        <div class="social-login">
+            <a href="#" class="social-btn google">
+                <img src="../assets/img/icon.jpg" alt="Google">
+                Continue with Google
+            </a>
+            <a href="#" class="social-btn microsoft">
+                <img src="../assets/img/icon.jpg" alt="Microsoft">
+                Continue with Microsoft
+            </a>
+            <a href="#" class="social-btn mobile">
+                <img src="../assets/img/icon.jpg" alt="Mobile">
+                Continue with Mobile Number
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Here you can add logic to switch between login and signup forms
+            if (tab === 'signup') {
+                document.querySelector('.login-header h1').textContent = 'Create Account';
+                document.querySelector('.login-header p').textContent = 'Join us and start your coffee journey';
+                document.querySelector('.login-btn').textContent = 'Sign Up';
+            } else {
+                document.querySelector('.login-header h1').textContent = 'Welcome Back';
+                document.querySelector('.login-header p').textContent = 'Sign in to your account to continue';
+                document.querySelector('.login-btn').textContent = 'Sign In';
+            }
+        }
+
+        // Form validation
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const inputs = this.querySelectorAll('input');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                const formGroup = input.parentElement;
+                formGroup.classList.remove('error', 'success');
+
+                if (!input.value.trim()) {
+                    formGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    formGroup.classList.add('success');
+                }
+            });
+
+            if (isValid) {
+                // Simulate login process
+                const btn = document.querySelector('.login-btn');
+                btn.textContent = 'Signing In...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    alert('Login successful! Redirecting...');
+                    // Here you would typically redirect to the main page
+                    window.location.href = 'index.html';
+                }, 2000);
+            }
+        });
+
+        // Real-time validation
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('blur', function() {
+                const formGroup = this.parentElement;
+                formGroup.classList.remove('error', 'success');
+
+                if (!this.value.trim()) {
+                    formGroup.classList.add('error');
+                } else {
+                    formGroup.classList.add('success');
+                }
+            });
+
+            input.addEventListener('input', function() {
+                const formGroup = this.parentElement;
+                if (this.value.trim()) {
+                    formGroup.classList.remove('error');
+                    formGroup.classList.add('success');
+                }
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // 3D Container Tilt Effect
+        const container = document.querySelector('.login-container');
+        container.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
+        
+        container.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+    </script>
+</body>
+</html>

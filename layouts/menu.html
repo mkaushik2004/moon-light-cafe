@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Moon Light Cafe 🌙</title>
+    <link rel="icon" href="../assets/img/icon.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coffee-dark: #2C1810;
+            --coffee-medium: #5D4037;
+            --coffee-light: #8D6E63;
+            --coffee-cream: #D7CCC8;
+            --coffee-gold: #D4AF37;
+            --coffee-white: #F5F5DC;
+            --coffee-brown: #3E2723;
+            --coffee-beige: #EFEBE9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--coffee-dark);
+            background: var(--coffee-white);
+            overflow-x: hidden;
+        }
+
+        /* 3D Coffee Bean Background */
+        .coffee-beans-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--coffee-medium) 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, var(--coffee-light) 3px, transparent 3px),
+                radial-gradient(circle at 40% 80%, var(--coffee-dark) 2px, transparent 2px),
+                radial-gradient(circle at 90% 20%, var(--coffee-medium) 2px, transparent 2px);
+            background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px;
+            animation: float-beans 20s ease-in-out infinite;
+        }
+
+        @keyframes float-beans {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--coffee-gold);
+        }
+
+        .navbar.scrolled {
+            background: rgba(44, 24, 16, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 3px solid var(--coffee-gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--coffee-white);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .nav-links a:hover {
+            color: var(--coffee-gold);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-banner {
+            height: 60vh;
+            background: linear-gradient(rgba(44, 24, 16, 0.7), rgba(93, 64, 55, 0.7)), 
+                        url('../assets/img/background/2.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--coffee-white);
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, var(--coffee-gold), var(--coffee-cream));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--coffee-beige) 0%, var(--coffee-cream) 100%);
+            position: relative;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coffee-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%235D4037" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23coffee-pattern)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .category-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--coffee-dark);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .category-header p {
+            font-size: 1.3rem;
+            color: var(--coffee-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Consistent Masonry Grid Layout */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .menu-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            background: white;
+            height: 400px; /* Consistent height for all items */
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 280px; /* Consistent image height */
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .menu-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(44, 24, 16, 0.9));
+            color: white;
+            padding: 2.5rem 2rem 2rem;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+
+        .menu-item:hover .menu-overlay {
+            transform: translateY(0);
+        }
+
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--coffee-gold);
+        }
+
+        .menu-item p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1;
+             font-size : 1.5rem;
+            font-weight: 700;
+            color: var(--coffee-gold);
+            margin-bottom: 1rem;
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            color: var(--coffee-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover .menu-badge {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Category Dividers */
+        .category-divider {
+            text-align: center;
+            margin: 6rem 0;
+            position: relative;
+        }
+
+        .category-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--coffee-gold), transparent);
+        }
+
+        .category-divider h2 {
+            background: var(--coffee-beige);
+            padding: 0 4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--coffee-dark);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            color: var(--coffee-white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--coffee-gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--coffee-cream);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            color: var(--coffee-white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--coffee-gold);
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--coffee-cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--coffee-gold);
+            transform: translateX(5px);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-logo img {
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--coffee-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--coffee-medium);
+            color: var(--coffee-cream);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .menu-item {
+                height: 350px;
+            }
+
+            .menu-item img {
+                height: 240px;
+            }
+
+            .category-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .category-divider h2 {
+                font-size: 2.2rem;
+                padding: 0 2rem;
+            }
+        }
+
+        /* 3D Hover Effects */
+        .menu-item {
+            transform-style: preserve-3d;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(2deg) scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 3D Coffee Beans Background -->
+    <div class="coffee-beans-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <img src="../assets/img/icon.jpg" alt="Moon Light Cafe" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <!-- <img src="../assets/img/icon.jpg" alt="Profile" class="logo"> -->
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>Our Culinary Journey</h1>
+            <p>Discover our carefully crafted selection of premium beverages, gourmet food, and delightful desserts.</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <!-- Bestseller Section -->
+            <div class="category-header fade-in">
+                <h2>Bestsellers</h2>
+                <p>Our most loved and popular items that customers can't get enough of</p>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Most Popular</div>
+                    <img src="../assets/img/menu/bestseller/1.jpg" alt="Java Chip Frappuccino">
+                    <div class="menu-overlay">
+                        <h3>Java Chip Frappuccino</h3>
+                        <p>A rich and creamy blend of coffee, chocolate chips, and whipped cream</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Refreshing</div>
+                    <img src="../assets/img/menu/bestseller/2.jpg" alt="Cold Coffee">
+                    <div class="menu-overlay">
+                        <h3>Cold Coffee</h3>
+                        <p>Smooth and refreshing cold coffee with a hint of sweetness</p>
+                                            </div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Indulgent</div>
+                    <img src="../assets/img/menu/bestseller/3.jpg" alt="Double Chocolate Chip Frappuccino">
+                    <div class="menu-overlay">
+                        <h3>Double Chocolate Chip Frappuccino</h3>
+                        <p>Indulgent chocolate frappuccino with extra chocolate chips</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Classic</div>
+                    <img src="../assets/img/menu/bestseller/4.jpg" alt="Coffee Americano">
+                    <div class="menu-overlay">
+                        <h3>Coffee Americano</h3>
+                        <p>Classic espresso with hot water for a bold, clean taste</p>
+                                            </div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Perfect Balance</div>
+                    <img src="../assets/img/menu/bestseller/5.jpg" alt="Cappuccino">
+                    <div class="menu-overlay">
+                        <h3>Cappuccino</h3>
+                        <p>Perfectly balanced espresso, steamed milk, and milk foam</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Spicy</div>
+                    <img src="../assets/img/menu/bestseller/6.jpg" alt="Paneer Tikka Sandwich">
+                    <div class="menu-overlay">
+                        <h3>Paneer Tikka Sandwich</h3>
+                        <p>Spiced paneer with fresh vegetables in toasted bread</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Fresh Baked</div>
+                    <img src="../assets/img/menu/bestseller/7.jpg" alt="Double Chocolate Chip Cookie">
+                    <div class="menu-overlay">
+                        <h3>Double Chocolate Chip Cookie</h3>
+                        <p>Warm, gooey cookie loaded with chocolate chips</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Fresh</div>
+                    <img src="../assets/img/menu/bestseller/8.jpg" alt="Chicken Salad Sandwich">
+                    <div class="menu-overlay">
+                        <h3>Chicken Salad Sandwich</h3>
+                        <p>Fresh chicken salad with crisp vegetables</p>
+                                            </div>
+                </div>
+            </div>
+            
+            <!-- Category Divider -->
+            <div class="category-divider">
+                <h2>Premium Drinks</h2>
+            </div>
+
+            <!-- Drinks Section -->
+            <div class="menu-grid">
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Signature</div>
+                    <img src="../assets/img/menu/drinks/1.jpg" alt="Toffee Nut Crunch Latte">
+                    <div class="menu-overlay">
+                        <h3>Toffee Nut Crunch Latte</h3>
+                        <p>Rich latte with toffee nut syrup and crunchy toppings</p>
+                                            </div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Iced</div>
+                    <img src="../assets/img/menu/drinks/2.jpg" alt="Iced Toffee Nut Crunch Latte">
+                    <div class="menu-overlay">
+                        <h3>Iced Toffee Nut Crunch Latte</h3>
+                        <p>Chilled version of our signature toffee nut latte</p>
+                                            </div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Unique</div>
+                    <img src="../assets/img/menu/drinks/3.jpg" alt="Crunchy Red Hat Mocha Latte">
+                    <div class="menu-overlay">
+                        <h3>Crunchy Red Hat Mocha Latte</h3>
+                        <p>Chocolate mocha with red velvet cake pieces</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Festive</div>
+                    <img src="../assets/img/menu/drinks/4.jpg" alt="Iced Gingerbread Latte">
+                    <div class="menu-overlay">
+                        <h3>Iced Gingerbread Latte</h3>
+                        <p>Festive gingerbread flavor in a refreshing iced drink</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Classic</div>
+                    <img src="../assets/img/menu/drinks/5.jpg" alt="Classic Iced Coffee">
+                    <div class="menu-overlay">
+                        <h3>Classic Iced Coffee</h3>
+                        <p>Smooth and refreshing classic iced coffee</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Traditional</div>
+                    <img src="../assets/img/menu/drinks/6.jpg" alt="Classic Hot Coffee">
+                    <div class="menu-overlay">
+                        <h3>Classic Hot Coffee</h3>
+                        <p>Rich and aromatic hot coffee brewed to perfection</p>
+                                            </div>
+                </div>
+            </div>
+
+            <!-- Category Divider -->
+            <div class="category-divider">
+                <h2>Gourmet Food</h2>
+            </div>
+
+            <!-- Food Section -->
+            <div class="menu-grid">
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Vegetarian</div>
+                    <img src="../assets/img/menu/food/1.jpg" alt="Tandoori Soya Chaap Wrap">
+                    <div class="menu-overlay">
+                        <h3>Tandoori Soya Chaap Wrap</h3>
+                        <p>Spiced soya chaap with fresh vegetables in a soft wrap</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">BBQ</div>
+                    <img src="../assets/img/menu/food/2.jpg" alt="BBQ Chicken Wrap">
+                    <div class="menu-overlay">
+                        <h3>BBQ Chicken Wrap</h3>
+                        <p>Grilled chicken with BBQ sauce and crisp vegetables</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Premium</div>
+                    <img src="../assets/img/menu/food/3.jpg" alt="Smoked Chicken & Salami Sandwich">
+                    <div class="menu-overlay">
+                        <h3>Smoked Chicken & Salami Sandwich</h3>
+                        <p>Premium smoked chicken with salami and fresh greens</p>
+                        
+                    </div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Fresh</div>
+                    <img src="../assets/img/menu/food/4.jpg" alt="Avocado Salsa Sandwich">
+                    <div class="menu-overlay">
+                        <h3>Avocado Salsa Sandwich</h3>
+                        <p>Fresh avocado with zesty salsa and crisp vegetables</p>
+                                            </div>
+                </div>
+            </div>
+
+            <!-- Category Divider -->
+            <div class="category-divider">
+                <h2>Desserts & Chocolates</h2>
+            </div>
+
+            <!-- Desserts Section -->
+            <div class="menu-grid">
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Creamy</div>
+                    <img src="../assets/img/menu/desserts & chocolates/1.jpeg" alt="Carrot Cheese Cake">
+                    <div class="menu-overlay">
+                        <h3>Carrot Cheese Cake</h3>
+                        <p>Moist carrot cake with creamy cheese frosting</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Rich</div>
+                    <img src="../assets/img/menu/desserts & chocolates/2.jpeg" alt="Hazelnut Cheese Cake">
+                    <div class="menu-overlay">
+                        <h3>Hazelnut Cheese Cake</h3>
+                        <p>Rich hazelnut cheesecake with chocolate drizzle</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Classic</div>
+                    <img src="../assets/img/menu/desserts & chocolates/3.jpeg" alt="Red Velvet">
+                    <div class="menu-overlay">
+                        <h3>Red Velvet Cake</h3>
+                        <p>Classic red velvet with cream cheese frosting</p>
+                                            </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Tropical</div>
+                    <img src="../assets/img/menu/desserts & chocolates/4.jpeg" alt="Coconut Pudding">
+                    <div class="menu-overlay">
+                        <h3>Coconut Pudding</h3>
+                        <p>Smooth coconut pudding with tropical flavors</p>
+                                            </div>
+                </div>
+            </div>
+
+            <!-- Category Divider -->
+            <div class="category-divider">
+                <h2>Coffee Roasters</h2>
+            </div>
+
+            <!-- Coffee Roasters Section -->
+            <div class="menu-grid">
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Premium</div>
+                    <img src="../assets/img/menu/coffee roasters/1.jpeg" alt="Bourbon Coffee">
+                    <div class="menu-overlay">
+                        <h3>Bourbon Coffee</h3>
+                        <p>Premium bourbon variety with rich, smooth flavor</p>
+                        
+                    </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Rare</div>
+                    <img src="../assets/img/menu/coffee roasters/l.jpg" alt="Liberica Coffee">
+                    <div class="menu-overlay">
+                        <h3>Liberica Coffee</h3>
+                        <p>Rare Liberica beans with unique floral notes</p>
+                        
+                    </div>
+                </div>
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Balanced</div>
+                    <img src="../assets/img/menu/coffee roasters/k.jpeg" alt="Kent Coffee">
+                    <div class="menu-overlay">
+                        <h3>Kent Coffee</h3>
+                        <p>Classic Kent variety with balanced acidity</p>
+                        
+                    </div>
+                </div> 
+
+                <div class="menu-item fade-in">
+                    <div class="menu-badge">Smooth</div>
+                    <img src="../assets/img/menu/coffee roasters/a.jpeg" alt="Arabica Coffee">
+                    <div class="menu-overlay">
+                        <h3>Arabica Coffee</h3>
+                        <p>Premium Arabica beans with smooth, sweet taste</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Menu Items</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Coffee Varieties</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Dessert Options</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Food Items</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="../assets/img/icon.jpg" style="height: 150px; width: 150px; border-radius: 50%;" alt="Moon Light Cafe" class="footer-logo">
+                    <p>Creating moments of joy, one cup at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@moonlightcafe.com</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Coffee Street, Brew City</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moon Light Cafe. All rights reserved. | Crafted with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.menu-item').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0) scale(1)';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

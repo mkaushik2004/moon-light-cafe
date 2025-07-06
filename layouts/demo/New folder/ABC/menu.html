@@ -1,0 +1,493 @@
+<style>
+    /* NavBar Styling */
+    nav{
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: aliceblue;
+        padding: 10px;
+        z-index: 10;
+    } 
+
+    nav img#logo{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+
+    }
+
+    nav img#profile{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+
+    }
+
+    nav div {
+        display: flex;
+        justify-content:space-between;
+        gap: 20%;
+
+    }
+    nav div a{
+        color: aliceblue;
+        text-decoration: none;
+    }
+
+    /* NavBar Styling */
+
+    
+
+    /* Footer Styling */
+    #footer {
+        background-color: black;
+        color: white;
+        padding: 20px 0;
+        font-family: Arial, sans-serif;
+        margin-top: 50px; /* Adds space above the footer */
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        flex-wrap: wrap;
+        gap: 20px; /* Space between sections */
+    }
+
+    .footer-logo img {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+    }
+
+    .footer-links ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin: 10px 0;
+    }
+
+    .footer-links a {
+        color: antiquewhite;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+
+    .footer-contact p {
+        margin: 10px 0;
+    }
+
+    .footer-bottom {
+        background-color: #333;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 20px;
+    }
+
+    .footer-bottom p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    /* Footer Styling */
+    
+    
+    /* menu Styling */
+    #special
+            {
+                background-color: rgb(255, 255, 255);
+                text-align: center;
+                padding: 1px 0 30px 0;
+            }
+
+            #splmenu1 
+            {
+                display: flex;
+                flex-wrap: wrap; 
+                justify-content: space-around; 
+                gap: 20px; 
+                margin-top: 20px;
+                padding: 0 10px; 
+            }
+
+            #splmenu1 > div {
+            background-color: rgba(198, 196, 196, 0.564);
+            height: 350px;
+            width: 350px;
+            color: rgb(0, 0, 0);
+            align-items: center;
+            padding: 10px;
+            border-radius: 30%;
+            }
+
+            .spl1{
+                height: 100px;
+                width : 100px;
+                border-radius: 50%;
+            }
+
+            .menubtn{
+                all: unset;
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.858);
+                color: white;
+                border: 5px  rgb(219, 207, 207);
+                border-style:double;
+                border-radius: 20px;
+                padding: 7px;
+            }
+
+    
+    /* menu Styling */
+
+</style>
+
+<!--  NavBar Section -->
+<nav style="background-color: black;">
+    <img id="logo" src="../assets/img/icon.jpg" alt="logo">
+    <div>    
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Menu</a>
+        <a href="#">Testimonials</a>
+    </div>
+    <img id="profile" src="../assets/img/icon.jpg" alt="profile">
+</nav>
+<!--  NavBar Section -->
+
+<!--Menu Section-->
+<div id="special">
+    <h1>Findings of the house</h1>
+
+    <h2 style="text-align: left; padding-left: 20px;">BESTSELLER</h2>
+    
+    <div id = "splmenu1">
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/1.jpg" alt="spl1">
+            <h1>JAVA CHIP FRAPPUCCINO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        
+
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/2.jpg" alt="spl1">
+            <h1>COLD COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/3.jpg" alt="spl1">
+            <h1>DOUBLE CHOCOLATE CHIP FRAPPUCCINO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/4.jpg" alt="spl1">
+            <h1>COFFEE AMERICANO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/5.jpg" alt="spl1">
+            <h1>CAPPUCCINO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/6.jpg" alt="spl1">
+            <h1>PANEER TIKKA SANDWICH</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/7.jpg" alt="spl1">
+            <h1>DOUBLE CHOCOLATE CHIP COOKIE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        
+        <div>
+            <img class="spl1" src="../assets/img/menu/bestseller/8.jpg" alt="spl1">
+            <h1>CHICKEN SALAD SANDWICH</h1>
+            <button class="menubtn">Add To Cart</button>
+         </div>
+    </div>
+    <br>
+    <hr>
+    <hr>
+    <hr>
+    <br>
+    <h2 style="text-align: left; padding-left: 20px;">DRINKS</h2>
+
+    <div id = "splmenu1">
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/1.jpg" alt="spl1">
+            <h1>TOFFEE NUT CRUNCH LATTE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        
+
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/2.jpg" alt="spl1">
+            <h1>ICED TOFFEE NUT CRUNCH LATTE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/3.jpg" alt="spl1">
+            <h1>CRUNCHY RED HAT MOCHA LATTE </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/4.jpg" alt="spl1">
+            <h1>ICED GINGERBREAD LATTE </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/5.jpg" alt="spl1">
+            <h1>CLASSIC ICED COFFEE </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/6.jpg" alt="spl1">
+            <h1>CLASSIC HOT COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/7.jpg" alt="spl1">
+            <h1>CAFFÈ AMERICANO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/8.jpg" alt="spl1">
+            <h1>CAPPUCCINO </h1>
+            <button class="menubtn">Add To Cart</button>
+            
+        </div>
+        
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/9.jpg" alt="spl1">
+            <h1>CAFFE LATTE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/10.jpg" alt="spl1">
+            <h1>DOPPIO ESPRESSO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/11.jpg" alt="spl1">
+            <h1>FLAT WHITE </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/12.jpg" alt="spl1">
+            <h1>CHOCOLATE CORTADO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/13.jpg" alt="spl1">
+            <h1>CORTADO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/14.jpg" alt="spl1">
+            <h1>ICED CAFFÈ AMERICANO</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/drinks/15.jpg" alt="spl1">
+            <h1>ICED VELVET VANILLA LATTE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+
+    </div>
+    <hr>
+    <hr>
+    <hr>
+    <br>
+    <h2 style="text-align: left; padding-left: 20px;">FOOD</h2>
+
+    <div id = "splmenu1">
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/1.jpg" alt="spl1">
+            <h1>TANDOORI SOYA CHAAP WRAP </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/2.jpg" alt="spl1">
+            <h1>BBQ CHICKEN WRAP</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/3.jpg" alt="spl1">
+            <h1>SMOKED CHICKEN & SALAMI SANDWICH</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/4.jpg" alt="spl1">
+            <h1>AVOCADO SALSA SANDWICH </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/5.jpg" alt="spl1">
+            <h1>EGG & MAYO SANDWICH </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/6.jpg" alt="spl1">
+            <h1>LEBANESE CHICKEN SANDWICH </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/7.jpg" alt="spl1">
+            <h1>CHILLI PANEER SANDWICH </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/8.jpg" alt="spl1">
+            <h1>PANEER TIKKA SANDWICH </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/9.jpg" alt="spl1">
+            <h1>CHICKEN SALAD SANDWICH</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/10.jpg" alt="spl1">
+            <h1>SPINACH & CORN SANDWICH</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/11.jpg" alt="spl1">
+            <h1>BASIL TOMATO MOZZARELLA CHEESE SANDWICH </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/12.jpg" alt="spl1">
+            <h1>BAKE IN SRIRACHA CHICKEN SOURDOUGH SW </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/13.jpg" alt="spl1">
+            <h1>BAKE IN PESTO VEGGIE SOURDOUGH SW </h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/food/14.jpg" alt="spl1">
+            <h1>BAKE IN MUSHROOM CHEESE MELT BAGUETTE SW</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+    </div>
+    <hr>
+    <hr>
+    <hr>
+    <br>
+    <h2 style="text-align: left; padding-left: 20px;">DESSERTS & CHOCOLATE</h2>
+
+    <div id = "splmenu1">
+        <div>
+            <img class="spl1" src="../assets/img/menu/desserts & chocolates/1.jpeg" alt="spl1">
+            <h1>CARROT CHEESE CAKE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/desserts & chocolates/2.jpeg" alt="spl1">
+            <h1>HAZELNUT CHEESE CAKE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/desserts & chocolates/3.jpeg" alt="spl1">
+            <h1>RED VELVET</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+
+        <div>
+            <img class="spl1" src="../assets/img/menu/desserts & chocolates/4.jpeg" alt="spl1">
+            <h1>COCONUT PUDDING</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+
+        <div>
+            <img class="spl1" src="../assets/img/menu/desserts & chocolates/8.jpg" alt="spl1">
+            <h1>MOONLIGHT BLUEBERRY CHOCOLATE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+
+        <div>
+            <img class="spl1" src="../assets/img/menu/desserts & chocolates/6.jpg" alt="spl1">
+            <h1>MOONLIGHT PALM SUGAR & CRISPY CHOCOLATE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+     </div>
+     <hr>
+    <hr>
+    <hr>
+    <br>
+    <h2 style="text-align: left; padding-left: 20px;">COFFEE ROASTERS</h2>
+
+    <div id = "splmenu1">
+        <div>
+            <img class="spl1" src="../assets/img/menu/coffee roasters/1.jpeg" alt="spl1">
+            <h1>BOURBON COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/coffee roasters/l.jpg" alt="spl1">
+            <h1>LIBERICA COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div> <div>
+            <img class="spl1" src="../assets/img/menu/coffee roasters/k.jpeg" alt="spl1">
+            <h1>KENT COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/coffee roasters/a.jpeg" alt="spl1">
+            <h1>ARABICA COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/coffee roasters/r" alt="spl1">
+            <h1>ROBUSTA COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+        </div>
+        <div>
+            <img class="spl1" src="../assets/img/menu/coffee roasters/m.jpg" alt="spl1">
+            <h1>MONSOONED MALABAR COFFEE</h1>
+            <button class="menubtn">Add To Cart</button>
+
+</div>
+<!--Menu Section-->
+
+<!-- Footer Section -->
+<footer id="footer">
+<div class="footer-content">
+<div class="footer-logo">
+    <img src="../assets/img/icon.jpg" alt="Cafe Logo" id="footer-logo">
+</div>
+<div class="footer-links">
+    <h4>Quick Links</h4>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Testimonials</a></li>
+    </ul>
+</div>
+<div class="footer-contact">
+    <h4>Contact Us</h4>
+    <p>Email: info@moonlightcafe.com</p>
+    <p>Phone: +1 234 567 890</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 Moon Light Cafe. All rights reserved.</p>
+</div>
+</footer>
+<!-- Footer Section -->

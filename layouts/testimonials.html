@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | Moon Light Cafe 🌙</title>
+    <link rel="icon" href="../assets/img/icon.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coffee-dark: #2C1810;
+            --coffee-medium: #5D4037;
+            --coffee-light: #8D6E63;
+            --coffee-cream: #D7CCC8;
+            --coffee-gold: #D4AF37;
+            --coffee-white: #F5F5DC;
+            --coffee-brown: #3E2723;
+            --coffee-beige: #EFEBE9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--coffee-dark);
+            background: var(--coffee-white);
+            overflow-x: hidden;
+        }
+
+        /* 3D Coffee Bean Background */
+        .coffee-beans-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--coffee-medium) 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, var(--coffee-light) 3px, transparent 3px),
+                radial-gradient(circle at 40% 80%, var(--coffee-dark) 2px, transparent 2px),
+                radial-gradient(circle at 90% 20%, var(--coffee-medium) 2px, transparent 2px);
+            background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px;
+            animation: float-beans 20s ease-in-out infinite;
+        }
+
+        @keyframes float-beans {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--coffee-gold);
+        }
+
+        .navbar.scrolled {
+            background: rgba(44, 24, 16, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 3px solid var(--coffee-gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--coffee-white);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .nav-links a:hover {
+            color: var(--coffee-gold);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-banner {
+            height: 50vh;
+            background: linear-gradient(rgba(44, 24, 16, 0.7), rgba(93, 64, 55, 0.7)), 
+                        url('../assets/img/background/3.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--coffee-white);
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, var(--coffee-gold), var(--coffee-cream));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--coffee-beige) 0%, var(--coffee-cream) 100%);
+            position: relative;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coffee-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%235D4037" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23coffee-pattern)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--coffee-dark);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--coffee-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem 2.5rem;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.4s ease;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 8rem;
+            color: var(--coffee-gold);
+            font-family: 'Playfair Display', serif;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: var(--coffee-medium);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid var(--coffee-gold);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .author-image {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+        }
+
+        .author-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--coffee-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .author-info p {
+            color: var(--coffee-medium);
+            font-size: 0.95rem;
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .star {
+            color: var(--coffee-gold);
+            font-size: 1.1rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            color: var(--coffee-white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--coffee-gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--coffee-cream);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-brown) 100%);
+            color: var(--coffee-white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--coffee-gold), #B8860B);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--coffee-gold);
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--coffee-cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--coffee-gold);
+            transform: translateX(5px);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-logo img {
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--coffee-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--coffee-medium);
+            color: var(--coffee-cream);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* 3D Hover Effects */
+        .testimonial-card {
+            transform-style: preserve-3d;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(2deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 3D Coffee Beans Background -->
+    <div class="coffee-beans-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <img src="../assets/img/icon.jpg" alt="Moon Light Cafe" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <!-- <img src="../assets/img/icon.jpg" alt="Profile" class="logo"> -->
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>What Our Customers Say</h1>
+            <p>Real stories from coffee lovers who have experienced the magic of Moon Light Cafe</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Customer Testimonials</h2>
+                <p>Discover why our customers keep coming back for more. Read their authentic experiences and see what makes Moon Light Cafe special.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            "The Java Chip Frappuccino here is absolutely divine! The perfect balance of coffee and chocolate, and the staff is always so friendly. This has become my go-to spot for coffee dates with friends."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../assets/img/icon.jpg" alt="Sarah Johnson" class="author-image">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Regular Customer</p>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            "As a coffee connoisseur, I'm very particular about my brew. Moon Light Cafe never disappoints! Their Arabica coffee is smooth, rich, and perfectly roasted. The ambiance is cozy and perfect for working."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../assets/img/icon.jpg" alt="Michael Chen" class="author-image">
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <p>Coffee Enthusiast</p>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            "The Paneer Tikka Sandwich is a game-changer! Fresh ingredients, perfect spices, and the bread is always toasted to perfection. I love how they pay attention to every detail in their food preparation."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../assets/img/icon.jpg" alt="Priya Sharma" class="author-image">
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>Food Blogger</p>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            "I'm a student and this place has become my second home. Great WiFi, comfortable seating, and amazing coffee that keeps me going through long study sessions. The staff remembers my order!"
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../assets/img/icon.jpg" alt="Alex Rodriguez" class="author-image">
+                            <div class="author-info">
+                                <h4>Alex Rodriguez</h4>
+                                <p>Student</p>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            "The Red Velvet cake is to die for! Moist, creamy, and the perfect sweetness. I've tried many cafes but Moon Light Cafe's desserts are in a league of their own. Highly recommend!"
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../assets/img/icon.jpg" alt="Emma Wilson" class="author-image">
+                            <div class="author-info">
+                                <h4>Emma Wilson</h4>
+                                <p>Dessert Lover</p>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                            "What sets this cafe apart is their attention to detail and customer service. The baristas are true artists - their latte art is beautiful and the coffee is consistently excellent. A true gem!"
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="../assets/img/icon.jpg" alt="David Thompson" class="author-image">
+                            <div class="author-info">
+                                <h4>David Thompson</h4>
+                                <p>Business Professional</p>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">4.9★</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="../assets/img/icon.jpg" style="height: 150px; width: 150px; border-radius: 50%;" alt="Moon Light Cafe" class="footer-logo">
+                    <p>Creating moments of joy, one cup at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@moonlightcafe.com</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Coffee Street, Brew City</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Moon Light Cafe. All rights reserved. | Crafted with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
